@@ -14707,7 +14707,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>In dieser Einheit wollen wir lernen, wie man lineare Regressionen in Python mit der Bibliothek <em>statsmodels</em> durchführt.</li>
+<li>In dieser Einheit wollen wir lernen, wie man lineare Regressionen in Python mit der Bibliothek <em>statsmodels</em> durchführt (<code>import statsmodels.api as sm</code>).</li>
 <li>Eine lineare Regression ist ein statistisches Verfahren, das genutzt wird, um die Beziehung zwischen einer abhängigen Variable (oft auch Zielvariable oder Response-Variable genannt) und einer oder mehreren unabhängigen Variablen (auch Regressoren genannt) zu modellieren.</li>
 <li>Das Ziel der linearen Regression ist die Parameter (oder Koeffizienten) zu schätzen die oft mit dem griechischen Buchstaben $\beta$ bezeichnet werden. </li>
 <li>Die Parameter messen die Auswirkungen der Veränderung der unabhängigen Variablen auf die abhängige Variable. </li>
@@ -14743,16 +14743,14 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>Für diese Übung wollen wir den Datensatz <em>tips</em> aus der Biliothek <em>seaborn</em> verwenden.<sup class="footnote-ref" id="fnref-1"><a href="#fn-1">1</a></sup></li>
+<li>Für diese Übung wollen wir den Datensatz <em>tips</em> aus der Biliothek <em>seaborn</em> verwenden.</li>
 <li>Der Datensatz enthält Informationen über Trinkgelder, die in einem Restaurant gegeben wurden, und umfasst Variablen wie die Gesamtrechnung, den Trinkgeldbetrag, das Geschlecht der Person, die die Rechnung bezahlt, ob es Raucher in der Gruppe gab, den Wochentag, die Tageszeit und die Größe der Gruppe.</li>
 <li>Wir möchten eine bivariate lineare Regression schätzen, die den Trinkgeldbetrag (abhängige Variable) und die Gesamtrechnung (unabhängige Variable) in Beziehung setzt.</li>
 </ul>
-$$\text{tip_amount} = \beta_0 + \beta_1 \text{total_bill} + \epsilon$$<p>import statsmodels.formula.api as smf<code>. Dann</code>df = sns.load_dataset("tips")`</p>
-<div class="footnotes">
-<hr>
-<ol><li id="fn-1"><p>Importieren Sie die Bibliothek <em>seaborn</em>, wenn Sie die Übung replizieren möchten `<a href="#fnref-1" class="footnote">&#8617;</a></p></li>
-</ol>
-</div>
+$$\text{tip_amount} = \beta_0 + \beta_1 \text{total_bill} + \epsilon$$<ul>
+<li>Importieren Sie die Bibliothek <em>seaborn</em>, wenn Sie die Übung replizieren möchten <code>import statsmodels.formula.api as smf</code>. </li>
+<li>Dann <code>df = sns.load_dataset("tips")</code>.</li>
+</ul>
 
 </div>
 </div>
@@ -14895,7 +14893,7 @@ memory usage: 7.4 KB
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span>
 
-<span class="n">X</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
@@ -14921,8 +14919,8 @@ memory usage: 7.4 KB
 Dep. Variable:                    tip   R-squared:                       0.457
 Model:                            OLS   Adj. R-squared:                  0.454
 Method:                 Least Squares   F-statistic:                     203.4
-Date:                Sat, 15 Jun 2024   Prob (F-statistic):           6.69e-34
-Time:                        22:23:06   Log-Likelihood:                -350.54
+Date:                Sun, 16 Jun 2024   Prob (F-statistic):           6.69e-34
+Time:                        22:30:05   Log-Likelihood:                -350.54
 No. Observations:                 244   AIC:                             705.1
 Df Residuals:                     242   BIC:                             712.1
 Df Model:                           1                                         
@@ -14987,7 +14985,7 @@ class="
 <li>Wie hoch ist das Trinkgeld, wenn die Rechnung $\$50$ beträgt?</li>
 </ul>
 $$0.9203 + 0.1050 \cdot 50 = 6.1703$$<ul>
-<li>Nun wollen wir die gleiche Operation mit Python wiederholen.</li>
+<li>Nun wollen wir die gleiche Operation mit Python wiederholen (kleine Abweichungen aufgrund von Rundungsfehlern).</li>
 </ul>
 
 </div>
@@ -15003,7 +15001,7 @@ $$0.9203 + 0.1050 \cdot 50 = 6.1703$$<ul>
     <span class="s1">&#39;total_bill&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span>      
 <span class="p">})</span>
 
-<span class="n">X_predict</span> <span class="o">=</span> <span class="n">add_constant</span><span class="p">(</span><span class="n">X_predict</span><span class="p">,</span> <span class="n">has_constant</span><span class="o">=</span><span class="s1">&#39;add&#39;</span><span class="p">)</span>
+<span class="n">X_predict</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X_predict</span><span class="p">,</span> <span class="n">has_constant</span><span class="o">=</span><span class="s1">&#39;add&#39;</span><span class="p">)</span>
 
 <span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_predict</span><span class="p">)</span>
 
@@ -15111,7 +15109,7 @@ Dep. Variable:                    tip   R-squared:                       0.459
 Model:                            OLS   Adj. R-squared:                  0.455
 Method:                 Least Squares   F-statistic:                     102.4
 Date:                Sun, 16 Jun 2024   Prob (F-statistic):           6.57e-33
-Time:                        16:55:14   Log-Likelihood:                -349.93
+Time:                        22:30:05   Log-Likelihood:                -349.93
 No. Observations:                 244   AIC:                             705.9
 Df Residuals:                     241   BIC:                             716.3
 Df Model:                           2                                         
@@ -15171,7 +15169,7 @@ $$0.9632 + 0.1057 \cdot 50 - 0.1489 \cdot 0 = 6.2482$$<ul>
     <span class="s1">&#39;smoker_yes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="p">})</span>
 
-<span class="n">X_predict_ml</span> <span class="o">=</span> <span class="n">add_constant</span><span class="p">(</span><span class="n">X_predict_ml</span><span class="p">,</span> <span class="n">has_constant</span><span class="o">=</span><span class="s1">&#39;add&#39;</span><span class="p">)</span>
+<span class="n">X_predict_ml</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X_predict_ml</span><span class="p">,</span> <span class="n">has_constant</span><span class="o">=</span><span class="s1">&#39;add&#39;</span><span class="p">)</span>
 
 <span class="n">prediction_ml</span> <span class="o">=</span> <span class="n">model_ml</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_predict_ml</span><span class="p">)</span>
 
@@ -15258,7 +15256,7 @@ $$ p = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + ... + \beta_n x_n)}} $$<ul>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
-<li>Für diese Übung verwenden wir einen anderen Datensatz. Der Datensatz enthält Informationen über die Noten einiger Studenten (<em>score</em>) und die Anzahl der Stunden, die die Studenten mit Lernen verbracht haben (<em>hours</em>). Wir haben auch Informationen über das Geschlecht.<sup class="footnote-ref" id="fnref-1"><a href="#fn-1">1</a></sup></li>
+<li>Für diese Übung verwenden wir einen anderen Datensatz. Der Datensatz enthält Informationen über die Noten einiger Studierende (<em>score</em>) und die Anzahl der Stunden, die die Studierende mit Lernen verbracht haben (<em>hours</em>). Wir haben auch Informationen über das Geschlecht.<sup class="footnote-ref" id="fnref-1"><a href="#fn-1">1</a></sup></li>
 <li>Unser Ziel ist es, die Wahrscheinlichkeit für das Bestehen der Prüfung in Abhängigkeit von der Studienzeit zu schätzen. Wir können auch kontrollieren, ob es Unterschiede zwischen Frauen und Männern gibt.</li>
 <li>Einige Variablen sind nicht vorhanden und müssen definiert werden.</li>
 <li>Wenn Sie die Übung wiederholen möchten, sollten Sie zunächst die Daten herunterladen.</li>
@@ -15632,7 +15630,7 @@ Dep. Variable:                 passed   No. Observations:                   22
 Model:                          Logit   Df Residuals:                       19
 Method:                           MLE   Df Model:                            2
 Date:                Sun, 16 Jun 2024   Pseudo R-squ.:                  0.5698
-Time:                        21:31:26   Log-Likelihood:                -6.5595
+Time:                        22:30:05   Log-Likelihood:                -6.5595
 converged:                       True   LL-Null:                       -15.249
 Covariance Type:            nonrobust   LLR p-value:                 0.0001683
 ==============================================================================
@@ -15660,7 +15658,7 @@ male          -1.5885      1.475     -1.077      0.282      -4.480       1.303
 <li>Wie hoch ist die Wahrscheinlichkeit, dass ein männlicher Student, der 4 Stunden gelernt hat, die Prüfung besteht?</li>
 </ul>
 $$ p = \frac{1}{1 + e^{-(-6.9745 + 2.0119 \cdot 4 - 1.5885 \cdot 1)}} \approx 0.3708$$<ul>
-<li>Nun wollen wir die gleiche Operation mit Python wiederholen.</li>
+<li>Nun wollen wir die gleiche Operation mit Python wiederholen (kleine Abweichungen aufgrund von Rundungsfehlern).</li>
 </ul>
 
 </div>
@@ -15677,11 +15675,11 @@ $$ p = \frac{1}{1 + e^{-(-6.9745 + 2.0119 \cdot 4 - 1.5885 \cdot 1)}} \approx 0.
     <span class="s1">&#39;male&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>        
 <span class="p">})</span>
 
-<span class="n">X_predict</span> <span class="o">=</span> <span class="n">add_constant</span><span class="p">(</span><span class="n">X_predict</span><span class="p">,</span> <span class="n">has_constant</span><span class="o">=</span><span class="s1">&#39;add&#39;</span><span class="p">)</span>
+<span class="n">X_predict</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X_predict</span><span class="p">,</span> <span class="n">has_constant</span><span class="o">=</span><span class="s1">&#39;add&#39;</span><span class="p">)</span>
 
 <span class="n">predicted_probability</span> <span class="o">=</span> <span class="n">model_lg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_predict</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">predicted_probability</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">predicted_probability</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -15698,7 +15696,7 @@ $$ p = \frac{1}{1 + e^{-(-6.9745 + 2.0119 \cdot 4 - 1.5885 \cdot 1)}} \approx 0.
 <div class="jp-OutputArea-child">
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>0    37.387347
+<pre>0    0.373873
 dtype: float64
 </pre>
 </div>
