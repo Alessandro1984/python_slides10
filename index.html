@@ -14711,7 +14711,7 @@ div.jp-OutputPrompt {
 <li>Eine lineare Regression ist ein statistisches Verfahren, das genutzt wird, um die Beziehung zwischen einer abhängigen Variable (oft auch Zielvariable oder Response-Variable genannt) und einer oder mehreren unabhängigen Variablen (auch Regressoren genannt) zu modellieren.</li>
 <li>Das Ziel der linearen Regression ist die Parameter (oder Koeffizienten) zu schätzen die oft mit dem griechischen Buchstaben $\beta$ bezeichnet werden. </li>
 <li>Die Parameter messen die Auswirkungen der Veränderung der unabhängigen Variablen auf die abhängige Variable. </li>
-<li>Wir haben keine Zeit, die Formeln für die Ermittlung der $\beta$-Koeffizienten zu untersuchen. Die Formeln sind in jedem guten Ökonometrie- Lehrbuch zu finden.</li>
+<li>Wir haben keine Zeit, die Formeln für die Ermittlung der $\beta$-Koeffizienten zu untersuchen. Die Formeln sind in jedem guten Ökonometrie-Lehrbuch zu finden.</li>
 <li>In dieser Präsentation konzentrieren wir uns darauf, wie man Regressionen in Python schätzt, wie man Koeffizienten interpretiert und wie man Regressionen für Prognosen verwendet.</li>
 </ul>
 
@@ -14894,7 +14894,7 @@ memory usage: 7.4 KB
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></div>
@@ -14919,7 +14919,7 @@ Dep. Variable:                    tip   R-squared:                       0.457
 Model:                            OLS   Adj. R-squared:                  0.454
 Method:                 Least Squares   F-statistic:                     203.4
 Date:                Sun, 16 Jun 2024   Prob (F-statistic):           6.69e-34
-Time:                        22:30:05   Log-Likelihood:                -350.54
+Time:                        22:38:34   Log-Likelihood:                -350.54
 No. Observations:                 244   AIC:                             705.1
 Df Residuals:                     242   BIC:                             712.1
 Df Model:                           1                                         
@@ -14997,7 +14997,7 @@ $$0.9203 + 0.1050 \cdot 50 = 6.1703$$<ul>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <div class="highlight"><pre><span></span><span class="n">X_predict</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-    <span class="s1">&#39;total_bill&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span>      
+    <span class="s1">&#39;total_bill&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">]</span>      
 <span class="p">})</span>
 
 <span class="n">X_predict</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X_predict</span><span class="p">,</span> <span class="n">has_constant</span><span class="o">=</span><span class="s1">&#39;add&#39;</span><span class="p">)</span>
@@ -15108,7 +15108,7 @@ Dep. Variable:                    tip   R-squared:                       0.459
 Model:                            OLS   Adj. R-squared:                  0.455
 Method:                 Least Squares   F-statistic:                     102.4
 Date:                Sun, 16 Jun 2024   Prob (F-statistic):           6.57e-33
-Time:                        22:30:05   Log-Likelihood:                -349.93
+Time:                        22:38:34   Log-Likelihood:                -349.93
 No. Observations:                 244   AIC:                             705.9
 Df Residuals:                     241   BIC:                             716.3
 Df Model:                           2                                         
@@ -15151,7 +15151,7 @@ $$0.9632 + 0.1057 \cdot 50 - 0.1489 \cdot 1 = 6.0992$$<ul>
 <li>Ein Nichtraucher gibt ein Trinkgeld von:</li>
 </ul>
 $$0.9632 + 0.1057 \cdot 50 - 0.1489 \cdot 0 = 6.2482$$<ul>
-<li>Nun wollen wir die gleiche Operation mit Python wiederholen.</li>
+<li>Nun wollen wir die gleiche Operation mit Python wiederholen (kleine Abweichungen aufgrund von Rundungsfehlern).</li>
 </ul>
 
 </div>
@@ -15629,7 +15629,7 @@ Dep. Variable:                 passed   No. Observations:                   22
 Model:                          Logit   Df Residuals:                       19
 Method:                           MLE   Df Model:                            2
 Date:                Sun, 16 Jun 2024   Pseudo R-squ.:                  0.5698
-Time:                        22:30:05   Log-Likelihood:                -6.5595
+Time:                        22:38:35   Log-Likelihood:                -6.5595
 converged:                       True   LL-Null:                       -15.249
 Covariance Type:            nonrobust   LLR p-value:                 0.0001683
 ==============================================================================
