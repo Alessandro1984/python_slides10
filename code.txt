@@ -1,0 +1,3 @@
+jupyter nbconvert slides10.ipynb --to slides --stdout --SlidesExporter.reveal_scroll=True > index.html
+
+jupyter nbconvert slides10.ipynb --to slides --stdout --no-input > index.html
